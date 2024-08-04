@@ -1,16 +1,16 @@
 ### [S-#] Storing the Password on-chain makes it visible to everyone and its no longer private
 
-** Description: **
+**Description:**
 
 All data stored on-chain is visible to anyone, and can be read directly from blockchain. The PasswordStore::`s_password` variable is intended to be a private variable an only accessed through PasswordStore::`getPassword` function, which intended to be only called by the owner contract
 
 We show one such method of reading any data off-chain below.
 
-** Impact: **
+**Impact:**
 
 Anyone can read the private password, severly breaking the functionality of the protocol.
 
-orage tool
+Storage tool
 
 We use `1` because that's the storage slot of `s_password` in the contract.
 
@@ -34,7 +34,7 @@ And get an output of:
 myPassword
 ```
 
-** Recommended Mitigation: ** Due to this, the overall architecture of the contract should be rethought. One could encrypt the password off-chain, and then store the encrypted password on-chain. This would require the user to remember another password off-chain to decrypt the password. However, you'd also likely want to remove the view function as you wouldn't want the user to accidentally send a transaction with the password that decrypts your password. 
+**Recommended Mitigation:** Due to this, the overall architecture of the contract should be rethought. One could encrypt the password off-chain, and then store the encrypted password on-chain. This would require the user to remember another password off-chain to decrypt the password. However, you'd also likely want to remove the view function as you wouldn't want the user to accidentally send a transaction with the password that decrypts your password. 
 
 
 
