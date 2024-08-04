@@ -85,3 +85,12 @@ if (msg.sender != s_owner) {
 }
 ```
 
+### [S-#] `PasswordStore::getPassword` natspec indicates a parameter that doesn't exists, causing the natspec to be incorrect
+
+**Impact:** The natspec is incorrect
+
+**Recommended Mitigations**  Remove the Incorrect NatSpec Line.
+
+```diff 
+- * @param newPassword The new password to set
+```
